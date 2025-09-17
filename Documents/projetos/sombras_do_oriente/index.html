@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Sombras do Oriente - Transforme Suas Memórias em Perfumes Únicos</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Maison de perfumaria de nicho que oferece experiências olfativas personalizadas. Transforme suas memórias em fragrâncias exclusivas com nosso perfumista especializado.">
+    <meta name="keywords" content="perfume personalizado, fragrância exclusiva, perfumaria de nicho, experiência olfativa, perfume sob medida">
+    <meta name="author" content="Sombras do Oriente">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sombras do Oriente - Transforme Suas Memórias em Perfumes Únicos">
+    <meta property="og:description" content="Maison de perfumaria de nicho que oferece experiências olfativas personalizadas.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <style>
+        /* CSS Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --marrom-espresso: #3D2B24;
+            --areia-palido: #F6F1EC;
+            --dourado-profundo: #A87C40;
+            --cinza-quente: #7A6E63;
+            --bege-pastel: #EDE6DC;
+            --branco: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--marrom-espresso);
+            background-color: var(--areia-palido);
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* Container System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .container { max-width: 768px; }
+        }
+
+        @media (max-width: 768px) {
+            .container { max-width: 420px; padding: 0 15px; }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(246, 241, 236, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(168, 124, 64, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(246, 241, 236, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--marrom-espresso);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo.small {
+            font-size: 1.4rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--marrom-espresso);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus {
+            color: var(--dourado-profundo);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dourado-profundo);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a:focus::after {
+            width: 100%;
+        }
+
+        /* Menu de Usuário */
+        .user-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bege-pastel);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .user-info:hover {
+            background: var(--dourado-profundo);
+            color: white;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: var(--cinza-quente);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            margin-left: 8px;
+        }
+
+        .logout-btn:hover {
+            background: #dc3545;
+            color: white;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--marrom-espresso);
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        
+        .mobile-menu-toggle:hover,
+        .mobile-menu-toggle:focus,
+        .mobile-menu-toggle:active {
+            background: rgba(168, 124, 64, 0.1);
+            color: var(--dourado-profundo);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--areia-palido);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu.active {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--marrom-espresso);
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        
+        .mobile-menu-close:hover,
+        .mobile-menu-close:focus,
+        .mobile-menu-close:active {
+            background: rgba(168, 124, 64, 0.1);
+            color: var(--dourado-profundo);
+            transform: rotate(90deg);
+        }
+
+        .mobile-nav {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav li {
+            margin: 1rem 0;
+        }
+
+        .mobile-nav a {
+            font-size: 1.5rem;
+            color: var(--marrom-espresso);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            padding: 15px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        
+        .mobile-nav a:hover,
+        .mobile-nav a:focus,
+        .mobile-nav a:active {
+            background: var(--dourado-profundo);
+            color: var(--branco);
+            transform: translateY(-2px);
+        }
+
+        /* MOBILE RESPONSIVO - VERSÃO CORRIGIDA */
+        @media (max-width: 768px) {
+            .nav-menu { 
+                display: none !important; 
+            }
+            .mobile-menu-toggle { 
+                display: block !important; 
+            }
+            
+            /* Container mobile */
+            .container {
+                max-width: 100% !important;
+                padding: 0 15px !important;
+            }
+            
+            /* Seções mobile */
+            .page {
+                padding: 20px 0 !important;
+            }
+            
+            .section {
+                padding: 30px 0 !important;
+                overflow-x: hidden !important;
+            }
+            
+            /* Títulos mobile */
+            h1, .section h1, .hero h1 {
+                font-size: 1.8rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 15px !important;
+            }
+            
+            h2, .section h2 {
+                font-size: 1.5rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 12px !important;
+            }
+            
+            h3, .section h3 {
+                font-size: 1.3rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 10px !important;
+            }
+            
+            /* Texto mobile */
+            p, .section p, li {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 12px !important;
+            }
+            
+            /* Grids mobile - forçar coluna única */
+            .experience-grid,
+            .steps-grid,
+            .team-grid,
+            .features-grid {
+                display: block !important;
+                grid-template-columns: none !important;
+            }
+            
+            .experience-card,
+            .step-card, 
+            .team-member,
+            .feature-card {
+                display: block !important;
+                width: 100% !important;
+                margin: 0 0 20px 0 !important;
+                padding: 20px 15px !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* Hero section mobile */
+            .hero {
+                padding: 100px 0 50px 0 !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                padding: 20px !important;
+            }
+            
+            /* Formulários mobile */
+            .contact-form,
+            .form-container {
+                padding: 20px 15px !important;
+                margin: 0 !important;
+            }
+            
+            .form-row {
+                display: block !important;
+                flex-direction: column !important;
+            }
+            
+            .form-group {
+                width: 100% !important;
+                margin-bottom: 15px !important;
+            }
+            
+            input, textarea, select {
+                width: 100% !important;
+                font-size: 16px !important;
+                padding: 12px !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* Botões mobile */
+            .btn,
+            .btn-primary,
+            .btn-secondary {
+                width: 100% !important;
+                display: block !important;
+                margin: 10px 0 !important;
+                padding: 15px 20px !important;
+                font-size: 16px !important;
+                text-align: center !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* Imagens mobile */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            
+            /* Header mobile */
+            .header-content {
+                padding: 15px 0 !important;
+            }
+            
+            .logo {
+                font-size: 1.2rem !important;
+            }
+        }
+        
+        /* SEÇÕES ESPECÍFICAS MOBILE - CORREÇÃO FORÇADA */
+        @media (max-width: 768px) {
+            /* FORÇAR RESPONSIVIDADE DAS SEÇÕES PROBLEMÁTICAS */
+            #experiencias, #como-funciona, #sobre, #contato {
+                padding: 20px 0 !important;
+                overflow-x: hidden !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            #experiencias .container,
+            #como-funciona .container, 
+            #sobre .container,
+            #contato .container {
+                padding: 0 15px !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* FORÇAR ELEMENTOS INTERNOS DAS SEÇÕES */
+            #experiencias *,
+            #como-funciona *,
+            #sobre *,
+            #contato * {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* TÍTULOS DAS SEÇÕES PROBLEMÁTICAS */
+            #experiencias h1, #experiencias h2, #experiencias h3,
+            #como-funciona h1, #como-funciona h2, #como-funciona h3,
+            #sobre h1, #sobre h2, #sobre h3,
+            #contato h1, #contato h2, #contato h3 {
+                font-size: 1.5rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 15px !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+            
+            /* PARÁGRAFOS DAS SEÇÕES PROBLEMÁTICAS */
+            #experiencias p, #experiencias li,
+            #como-funciona p, #como-funciona li,
+            #sobre p, #sobre li,
+            #contato p, #contato li {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 12px !important;
+                width: 100% !important;
+                word-wrap: break-word !important;
+            }
+            
+            /* GRIDS E CARDS DAS SEÇÕES PROBLEMÁTICAS */
+            #experiencias .experience-grid,
+            #como-funciona .steps-grid,
+            #sobre .team-grid {
+                display: block !important;
+                grid-template-columns: none !important;
+                width: 100% !important;
+            }
+            
+            #experiencias .experience-card,
+            #como-funciona .step-card,
+            #sobre .team-member {
+                width: 100% !important;
+                margin: 0 0 20px 0 !important;
+                padding: 15px !important;
+                display: block !important;
+                float: none !important;
+            }
+            
+            /* FAQ (manter funcionando) */
+            #faq {
+                padding: 20px 0 !important;
+                overflow-x: hidden !important;
+            }
+            
+            #faq .container {
+                padding: 0 15px !important;
+                max-width: 100% !important;
+            }
+            
+            .faq-item {
+                margin-bottom: 15px !important;
+                border-radius: 8px !important;
+            }
+            
+            .faq-question {
+                padding: 15px !important;
+                font-size: 14px !important;
+                text-align: left !important;
+            }
+            
+            .faq-answer {
+                padding: 15px !important;
+                font-size: 13px !important;
+                line-height: 1.5 !important;
+            }
+        }
+        
+        /* MOBILE PEQUENO */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px !important;
+            }
+            
+            h1, .hero h1 {
+                font-size: 1.6rem !important;
+            }
+            
+            .section {
+                padding: 20px 0 !important;
+            }
+            
+            .mobile-nav a {
+                font-size: 18px !important;
+                padding: 15px 20px !important;
+            }
+            
+            /* FORÇAR AINDA MAIS AS SEÇÕES PROBLEMÁTICAS */
+            #experiencias, #como-funciona, #sobre, #contato {
+                font-size: 13px !important;
+            }
+            
+            #experiencias h1, #como-funciona h1, #sobre h1, #contato h1 {
+                font-size: 1.4rem !important;
+            }
+            
+            #experiencias h2, #como-funciona h2, #sobre h2, #contato h2 {
+                font-size: 1.2rem !important;
+            }
+        }
+        
+        /* === RESPONSIVIDADE OTIMIZADA MOBILE/DESKTOP === */
+        @media screen and (max-width: 768px) {
+            /* Layout geral mobile */
+            .container {
+                max-width: 100% !important;
+                padding: 0 10px !important;
+            }
+            
+            /* Header mobile */
+            .header-content {
+                padding: 10px 0 !important;
+            }
+            
+            .logo {
+                font-size: 1.4rem !important;
+            }
+            
+            /* Menu mobile */
+            .nav-menu {
+                display: none !important;
+            }
+            
+            .mobile-menu-toggle {
+                display: block !important;
+                background: rgba(168, 124, 64, 0.1) !important;
+                border: 1px solid var(--dourado-profundo) !important;
+                border-radius: 5px !important;
+            }
+            
+            /* Cards e seções mobile */
+            #experiencias .experience-card,
+            #como-funciona .step-card,
+            #sobre .team-member,
+            #contato .contact-form,
+            .card {
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 10px 0 !important;
+                padding: 15px !important;
+                box-sizing: border-box !important;
+                float: none !important;
+                display: block !important;
+            }
+            
+            /* Grid mobile */
+            .experiences-grid,
+            .steps-grid {
+                display: block !important;
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            
+            /* Botões mobile */
+            .btn, button {
+                width: 100% !important;
+                margin: 8px 0 !important;
+                padding: 12px !important;
+                font-size: 14px !important;
+                text-align: center !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* Texto mobile */
+            h1 {
+                font-size: 1.8rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            h2 {
+                font-size: 1.4rem !important;
+            }
+            
+            h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            /* Seções mobile */
+            .section {
+                padding: 40px 0 !important;
+            }
+            
+            .page {
+                padding: 20px 0 !important;
+            }
+        }
+        
+        /* === RESPONSIVIDADE DESKTOP === */
+        @media screen and (min-width: 769px) {
+            .mobile-menu-toggle {
+                display: none !important;
+            }
+            
+            .nav-menu {
+                display: flex !important;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        /* === TOUCH E HOVER OTIMIZADO === */
+        @media (hover: hover) {
+            /* Desktop hover effects */
+            .nav-menu a:hover,
+            .btn:hover {
+                transform: translateY(-1px);
+            }
+        }
+        
+        @media (hover: none) {
+            /* Mobile touch optimization */
+            .nav-menu a:active,
+            .btn:active,
+            .mobile-nav a:active {
+                transform: scale(0.95);
+                background: var(--dourado-profundo) !important;
+                color: white !important;
+            }
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--marrom-espresso) 0%, var(--cinza-quente) 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(246, 241, 236, 0.05);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            margin: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--dourado-profundo);
+            color: white;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: #956B35;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 124, 64, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background: white;
+            color: var(--marrom-espresso);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--dourado-profundo);
+            border: 2px solid var(--dourado-profundo);
+        }
+
+        .btn-outline:hover,
+        .btn-outline:focus {
+            background: var(--dourado-profundo);
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--marrom-espresso);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--cinza-quente);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(168, 124, 64, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--dourado-profundo);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--marrom-espresso);
+        }
+
+        .card p {
+            color: var(--cinza-quente);
+            line-height: 1.6;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            background: var(--dourado-profundo);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-step h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--marrom-espresso);
+        }
+
+        .process-step p {
+            color: var(--cinza-quente);
+            font-size: 0.95rem;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--marrom-espresso);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dourado-profundo);
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--dourado-profundo);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Page Navigation */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Accessibility */
+        *:focus {
+            outline: 3px solid var(--dourado-profundo);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Loading */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(246, 241, 236, 0.9);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(168, 124, 64, 0.2);
+            border-left: 4px solid var(--dourado-profundo);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo" id="logo" onclick="showPage('home')">
+                    <i class="fas fa-moon"></i> Sombras do Oriente
+                </a>
+                
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#" onclick="showPage('home')">Início</a></li>
+                        <li><a href="#" onclick="showPage('experiencias')">Experiências</a></li>
+                        <li><a href="#" onclick="showPage('como-funciona')">Como Funciona</a></li>
+                        <li><a href="#" onclick="showPage('sobre')">Sobre</a></li>
+                        <li><a href="#" onclick="showPage('contato')">Contato</a></li>
+                        <li><a href="#" onclick="showPage('faq')">FAQ</a></li>
+                        <li id="authMenuItem">
+                            <a href="login.html" id="authLink">Entrar</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav">
+            <li><a href="#" onclick="navigateAndClose('home')">Início</a></li>
+            <li><a href="#" onclick="navigateAndClose('experiencias')">Experiências</a></li>
+            <li><a href="#" onclick="navigateAndClose('como-funciona')">Como Funciona</a></li>
+            <li><a href="#" onclick="navigateAndClose('sobre')">Sobre</a></li>
+            <li><a href="#" onclick="navigateAndClose('contato')">Contato</a></li>
+            <li><a href="#" onclick="navigateAndClose('faq')">FAQ</a></li>
+            <li id="mobileAuthMenuItem">
+                <a href="login.html" id="mobileAuthLink">Entrar</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <div class="page active" id="home">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content fade-in-up">
+                        <h1>Transforme Suas Memórias em Perfumes Únicos</h1>
+                        <p>Experiências olfativas personalizadas que capturam a essência das suas memórias mais preciosas</p>
+                        <div>
+                            <a href="#" class="btn btn-primary" onclick="showPage('experiencias')">
+                                <i class="fas fa-sparkles"></i> Descobrir Experiências
+                            </a>
+                            <a href="#" class="btn btn-secondary" onclick="showPage('como-funciona')">
+                                <i class="fas fa-play-circle"></i> Como Funciona
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us -->
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">Por que Escolher o Sombras do Oriente?</h2>
+                    <p class="section-subtitle">Combinamos tradição, ciência e arte para criar fragrâncias que contam sua história</p>
+                    
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Perfumista Especializado</h3>
+                            <p>Profissional experiente que traduz suas memórias em composições olfativas únicas e exclusivas</p>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-vials"></i>
+                            </div>
+                            <h3>3 Amostras Exclusivas</h3>
+                            <p>Receba três versões diferentes da sua fragrância para escolher a que mais toca seu coração</p>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Processo Personalizado</h3>
+                            <p>Questionário detalhado captura suas memórias, preferências e personalidade única</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Preview -->
+            <section class="section" style="background: white;">
+                <div class="container">
+                    <h2 class="section-title">Como Funciona</h2>
+                    <p class="section-subtitle">Um processo único e personalizado para criar sua fragrância exclusiva</p>
+                    
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="process-number">1</div>
+                            <h3>Escolha</h3>
+                            <p>Selecione sua experiência e faça o pedido</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="process-number">2</div>
+                            <h3>Questionário</h3>
+                            <p>Responda sobre suas memórias e preferências</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="process-number">3</div>
+                            <h3>Criação</h3>
+                            <p>Nosso perfumista desenvolve suas fragrâncias</p>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="process-number">4</div>
+                            <h3>Receba</h3>
+                            <p>3 amostras exclusivas chegam até você</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="#" class="btn btn-outline" onclick="showPage('como-funciona')">
+                            <i class="fas fa-arrow-right"></i> Ver Processo Completo
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    <!-- Experiências Page (observe os IDs usados!) -->
+    <div class="page" id="experiencias">
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">Nossas Experiências</h1>
+                <p class="section-subtitle">Escolha a experiência que mais ressoa com sua personalidade</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 3rem; margin-top: 3rem;">
+                    <!-- Experiência Feminina -->
+                    <div class="card" style="text-align: left;" id="experiencia-feminina">
+                        <div id="img-feminina" style="background: linear-gradient(135deg, #FFF0F5, #F8E8F5); height: 200px; border-radius: 12px; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; position: relative;">
+                            <i class="fas fa-spa" style="font-size: 4rem; color: var(--dourado-profundo); opacity: 0.3;"></i>
+                            <div style="position: absolute; top: 15px; right: 15px; background: #E91E63; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Feminina</div>
+                        </div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1rem;">Experiência Feminina</h3>
+                        <div id="descricao-feminina" style="margin-bottom: 2rem;"><p>Carregando descrição...</p></div>
+                        <div style="background: var(--bege-pastel); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                            <h4 style="margin-bottom: 1rem; color: var(--marrom-espresso);">Inclui:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 8px;"></i>3 amostras exclusivas de 5ml cada</li>
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 8px;"></i>Códigos únicos para cada fragrância</li>
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 8px;"></i>Questionário personalizado</li>
+                                <li><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 8px;"></i>Acompanhamento via WhatsApp</li>
+                            </ul>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <div>
+                                <div id="preco-feminina" style="font-size: 2.5rem; font-weight: 700; color: var(--dourado-profundo);">R$ --,--</div>
+                                <div style="color: #22C55E; font-weight: 600;">Frete grátis para todo Brasil</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; padding: 18px;" onclick="startPurchase('feminina')">
+                            <i class="fas fa-shopping-cart"></i> Comprar Experiência Feminina
+                        </button>
+                    </div>
+                    <!-- Experiência Masculina -->
+                    <div class="card" style="text-align: left;" id="experiencia-masculina">
+                        <div id="img-masculina" style="background: linear-gradient(135deg, #F0F9FF, #E0F2FE); height: 200px; border-radius: 12px; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; position: relative;">
+                            <i class="fas fa-mountain" style="font-size: 4rem; color: var(--dourado-profundo); opacity: 0.3;"></i>
+                            <div style="position: absolute; top: 15px; right: 15px; background: #2563EB; color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">Masculina</div>
+                        </div>
+                        <h3 style="font-size: 2rem; margin-bottom: 1rem;">Experiência Masculina</h3>
+                        <div id="descricao-masculina" style="margin-bottom: 2rem;"><p>Carregando descrição...</p></div>
+                        <div style="background: var(--bege-pastel); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                            <h4 style="margin-bottom: 1rem; color: var(--marrom-espresso);">Inclui:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 8px;"></i>3 amostras exclusivas de 5ml cada</li>
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 8px;"></i>Códigos únicos para cada fragrância</li>
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 8px;"></i>Questionário personalizado</li>
+                                <li><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 8px;"></i>Acompanhamento via WhatsApp</li>
+                            </ul>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <div>
+                                <div id="preco-masculina" style="font-size: 2.5rem; font-weight: 700; color: var(--dourado-profundo);">R$ --,--</div>
+                                <div style="color: #22C55E; font-weight: 600;">Frete grátis para todo Brasil</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; padding: 18px;" onclick="startPurchase('masculina')">
+                            <i class="fas fa-shopping-cart"></i> Comprar Experiência Masculina
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+        <!-- Como Funciona Page -->
+        <div class="page" id="como-funciona">
+            <section class="section">
+                <div class="container">
+                    <h1 class="section-title">Como Funciona</h1>
+                    <p class="section-subtitle">Um processo único e personalizado para transformar suas memórias em fragrâncias exclusivas</p>
+                    
+                    <!-- Step 1 -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                        <div>
+                            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                                <div style="width: 60px; height: 60px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin-right: 2rem;">1</div>
+                                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0;">Escolha Sua Experiência</h3>
+                            </div>
+                            <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.7;">Selecione entre nossas experiências Feminina ou Masculina. Cada uma é cuidadosamente desenvolvida para capturar as nuances únicas de cada personalidade e estilo de vida.</p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Experiência totalmente personalizada</li>
+                                <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Frete grátis para todo o Brasil</li>
+                                <li><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Acompanhamento via WhatsApp e e-mail</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+                            <i class="fas fa-shopping-cart" style="font-size: 4rem; color: var(--dourado-profundo); margin-bottom: 1rem;"></i>
+                            <h4 style="color: var(--marrom-espresso);">Escolha & Compre</h4>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem; direction: rtl;">
+                        <div style="direction: ltr;">
+                            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                                <div style="width: 60px; height: 60px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin-right: 2rem;">2</div>
+                                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0;">Questionário Olfativo</h3>
+                            </div>
+                            <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.7;">Após o pedido, você receberá acesso ao nosso questionário exclusivo. Conte suas memórias mais marcantes, suas preferências e deixe nosso perfumista conhecer sua essência única.</p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Perguntas sobre memórias afetivas</li>
+                                <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Preferências de fragrâncias</li>
+                                <li><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Personalidade e estilo de vida</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; direction: ltr;">
+                            <i class="fas fa-clipboard-list" style="font-size: 4rem; color: var(--dourado-profundo); margin-bottom: 1rem;"></i>
+                            <h4 style="color: var(--marrom-espresso);">Questionário Detalhado</h4>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                        <div>
+                            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                                <div style="width: 60px; height: 60px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin-right: 2rem;">3</div>
+                                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0;">Criação Artesanal</h3>
+                            </div>
+                            <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.7;">Nosso perfumista especializado analisa suas respostas e desenvolve três versões únicas da sua fragrância. Cada uma explora diferentes aspectos da sua personalidade e memórias.</p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Processo 100% artesanal</li>
+                                <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Ingredientes premium importados</li>
+                                <li><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>3 versões exclusivas</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+                            <i class="fas fa-flask" style="font-size: 4rem; color: var(--dourado-profundo); margin-bottom: 1rem;"></i>
+                            <h4 style="color: var(--marrom-espresso);">Criação Artesanal</h4>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem; direction: rtl;">
+                        <div style="direction: ltr;">
+                            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                                <div style="width: 60px; height: 60px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin-right: 2rem;">4</div>
+                                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0;">Entrega Exclusiva</h3>
+                            </div>
+                            <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.7;">Suas 3 amostras exclusivas de 5ml cada chegam em embalagem premium com códigos únicos. Teste cada uma e escolha aquela que mais toca seu coração.</p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Embalagem premium e sustentável</li>
+                                <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Códigos únicos para cada fragrância</li>
+                                <li><i class="fas fa-check" style="color: var(--dourado-profundo); margin-right: 12px;"></i>Descrição detalhada de cada aroma</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; direction: ltr;">
+                            <i class="fas fa-gift" style="font-size: 4rem; color: var(--dourado-profundo); margin-bottom: 1rem;"></i>
+                            <h4 style="color: var(--marrom-espresso);">Receba & Teste</h4>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div style="background: white; border-radius: 15px; padding: 3rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;">Pronto para Começar Sua Jornada Olfativa?</h2>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--cinza-quente);">Junte-se a centenas de clientes que já descobriram sua fragrância única</p>
+                        <div>
+                            <a href="#" class="btn btn-primary" onclick="showPage('experiencias')" style="margin-right: 1rem;">
+                                <i class="fas fa-sparkles"></i> Ver Experiências
+                            </a>
+                            <a href="#" class="btn btn-outline" onclick="showPage('sobre')">
+                                <i class="fas fa-info-circle"></i> Conhecer Nossa História
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sobre Page -->
+        <div class="page" id="sobre">
+            <section class="section">
+                <div class="container">
+                    <h1 class="section-title">Sobre o Sombras do Oriente</h1>
+                    <p class="section-subtitle">Uma jornada que começou com a paixão por transformar memórias em fragrâncias inesquecíveis</p>
+                    
+                    <!-- Nossa História -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                        <div>
+                            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 2rem; color: var(--marrom-espresso);">Nossa História</h2>
+                            <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.7;">O Sombras do Oriente nasceu da crença de que cada pessoa possui uma essência única, formada por suas memórias, experiências e sonhos. Nossa missão é capturar essa essência e transformá-la em uma fragrância que conte sua história.</p>
+                            <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.7;">Fundada por apaixonados pela arte da perfumaria, nossa empresa combina técnicas tradicionais orientais com tecnologia moderna, criando experiências olfativas verdadeiramente personalizadas.</p>
+                            <p style="font-size: 1.1rem; line-height: 1.7;">Cada fragrância é uma obra de arte líquida, desenvolvida especialmente para você por nosso perfumista especializado, usando apenas ingredientes premium de fornecedores selecionados.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, var(--dourado-profundo), var(--cinza-quente)); padding: 4rem; border-radius: 15px; text-align: center; color: white;">
+                            <i class="fas fa-moon" style="font-size: 5rem; margin-bottom: 2rem;"></i>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem;">Sombras do Oriente</h3>
+                            <p style="font-size: 1.2rem;">Onde memórias se transformam em fragrâncias</p>
+                        </div>
+                    </div>
+
+                    <!-- Nossos Valores -->
+                    <div style="background: white; border-radius: 15px; padding: 3rem; margin-bottom: 4rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">Nossos Valores</h2>
+                        <p style="text-align: center; font-size: 1.2rem; color: var(--cinza-quente); margin-bottom: 3rem;">Os princípios que guiam nossa paixão pela perfumaria</p>
+                        
+                        <div class="cards-grid">
+                            <div style="text-align: center;">
+                                <div style="width: 80px; height: 80px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem;">Personalização</h3>
+                                <p>Cada fragrância é única, desenvolvida especialmente para capturar sua essência individual</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="width: 80px; height: 80px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem;">Qualidade Premium</h3>
+                                <p>Usamos apenas ingredientes de alta qualidade e processos artesanais supervisionados</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <div style="width: 80px; height: 80px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem;">Sustentabilidade</h3>
+                                <p>Comprometidos com práticas sustentáveis e embalagens ecológicas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nossa Equipe -->
+                    <div style="text-align: center; margin-bottom: 4rem;">
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 3rem;">Nossa Equipe</h2>
+                        
+                        <div style="background: white; border-radius: 15px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 800px; margin: 0 auto;">
+                            <div style="display: flex; align-items: center; gap: 3rem; text-align: left;">
+                                <div style="width: 120px; height: 120px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; flex-shrink: 0;">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div>
+                                    <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem;">Nosso Perfumista</h3>
+                                    <p style="color: var(--dourado-profundo); font-weight: 600; margin-bottom: 1rem; font-size: 1.1rem;">Especialista em Fragrâncias Personalizadas</p>
+                                    <p style="color: var(--cinza-quente); line-height: 1.6;">Com vasta experiência em perfumaria artesanal, nosso perfumista especializado domina as técnicas tradicionais orientais e as combina com inovações modernas. Cada fragrância é uma obra de arte criada especialmente para você.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Final -->
+                    <div style="background: linear-gradient(135deg, var(--marrom-espresso), var(--cinza-quente)); border-radius: 15px; padding: 3rem; text-align: center; color: white;">
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem;">Faça Parte da Nossa História</h2>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Descubra como suas memórias podem se transformar em uma fragrância única</p>
+                        <a href="#" class="btn" onclick="showPage('experiencias')" style="background: var(--dourado-profundo); color: white;">
+                            <i class="fas fa-sparkles"></i> Começar Minha Experiência
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contato Page -->
+        <div class="page" id="contato">
+            <section class="section">
+                <div class="container">
+                    <h1 class="section-title">Fale Conosco</h1>
+                    <p class="section-subtitle">Estamos aqui para ajudar em sua jornada olfativa</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
+                        <!-- Informações de Contato -->
+                        <div>
+                            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem;">Entre em Contato</h2>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 1rem;">
+                                    <div style="width: 50px; height: 50px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem; font-weight: 600;">WhatsApp</h3>
+                                        <a href="https://wa.me/5551996145638" target="_blank" style="color: var(--dourado-profundo); text-decoration: none; font-weight: 500;">(51) 99614-5638</a>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 1rem;">
+                                    <div style="width: 50px; height: 50px; background: var(--dourado-profundo); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem; font-weight: 600;">E-mail</h3>
+                                        <a href="mailto:contato@sombrasdooriente.com.br" style="color: var(--dourado-profundo); text-decoration: none; font-weight: 500;">contato@sombrasdooriente.com.br</a>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                                    <div style="width: 50px; height: 50px; background: var(--cinza-quente); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem; font-weight: 600;">Horário de Atendimento</h3>
+                                        <p style="margin: 0; color: var(--cinza-quente);">Segunda a Sexta: 9h às 18h</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Formulário -->
+                        <div style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem;">Envie uma Mensagem</h2>
+                            
+                            <form id="contactForm" onsubmit="sendContactForm(event)">
+                                <div style="margin-bottom: 1.5rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--marrom-espresso);">Nome *</label>
+                                    <input type="text" name="nome" required style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;">
+                                </div>
+                                
+                                <div style="margin-bottom: 1.5rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--marrom-espresso);">E-mail *</label>
+                                    <input type="email" name="email" required style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;">
+                                </div>
+                                
+                                <div style="margin-bottom: 1.5rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--marrom-espresso);">Telefone</label>
+                                    <input type="tel" name="telefone" style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;">
+                                </div>
+                                
+                                <div style="margin-bottom: 1.5rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--marrom-espresso);">Assunto *</label>
+                                    <select name="assunto" required style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease; background: white;">
+                                        <option value="">Selecione um assunto</option>
+                                        <option value="duvidas">Dúvidas sobre o produto</option>
+                                        <option value="pedido">Acompanhar pedido</option>
+                                        <option value="sugestao">Sugestão</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="margin-bottom: 2rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--marrom-espresso);">Mensagem *</label>
+                                    <textarea name="mensagem" required rows="5" style="width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; resize: vertical; transition: border-color 0.3s ease;"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">
+                                    <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- FAQ Page -->
+        <div class="page" id="faq">
+            <section class="section">
+                <div class="container">
+                    <h1 class="section-title">Perguntas Frequentes</h1>
+                    <p class="section-subtitle">Respostas para as dúvidas mais comuns</p>
+                    
+                    <div style="max-width: 800px; margin: 3rem auto 0;">
+                        <div class="faq-item" style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden;">
+                            <button class="faq-question" onclick="toggleFAQ(1)" style="width: 100%; padding: 2rem; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: var(--marrom-espresso); cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Quanto tempo leva para receber as amostras?</span>
+                                <i class="fas fa-chevron-down faq-icon" id="faq-icon-1" style="color: var(--dourado-profundo); transition: transform 0.3s ease;"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-answer-1" style="display: none; padding: 0 2rem 2rem; color: var(--cinza-quente); line-height: 1.6;">
+                                Após finalizar o pedido e preencher o questionário, nosso perfumista leva de até 5 dias úteis para entrar em contato. O tempo de desenvolver, manipular e maturar suas fragrâncias exclusivas é de em média 20 dias. A entrega é feita em até 30 dias úteis após a criação.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden;">
+                            <button class="faq-question" onclick="toggleFAQ(2)" style="width: 100%; padding: 2rem; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: var(--marrom-espresso); cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>As fragrâncias são realmente exclusivas?</span>
+                                <i class="fas fa-chevron-down faq-icon" id="faq-icon-2" style="color: var(--dourado-profundo); transition: transform 0.3s ease;"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-answer-2" style="display: none; padding: 0 2rem 2rem; color: var(--cinza-quente); line-height: 1.6;">
+                                Sim! Cada fragrância é desenvolvida especialmente para você com base nas suas respostas do questionário. Nunca repetimos uma composição, garantindo que sua fragrância seja verdadeiramente única.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" style="background: white; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden;">
+                            <button class="faq-question" onclick="toggleFAQ(3)" style="width: 100%; padding: 2rem; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: var(--marrom-espresso); cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                                <span>Posso comprar o frasco completo depois?</span>
+                                <i class="fas fa-chevron-down faq-icon" id="faq-icon-3" style="color: var(--dourado-profundo); transition: transform 0.3s ease;"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-answer-3" style="display: none; padding: 0 2rem 2rem; color: var(--cinza-quente); line-height: 1.6;">
+                                Claro! Após testar suas 3 amostras, você pode solicitar o frasco completo da sua fragrância favorita. Oferecemos versões de 50ml e 100ml.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5551996145638" class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sombras do Oriente</h3>
+                    <p>Transformando memórias em fragrâncias únicas desde 2024.</p>
+                </div>
+            
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <a href="#" onclick="showPage('experiencias')">Experiências</a>
+                    <a href="#" onclick="showPage('como-funciona')">Como Funciona</a>
+                    <a href="#" onclick="showPage('sobre')">Sobre</a>
+                    <a href="#" onclick="showPage('contato')">Contato</a>
+                </div>
+            
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fab fa-whatsapp"></i> (51) 99614-5638</p>
+                    <p><i class="fas fa-envelope"></i> contato@sombrasdooriente.com.br</p>
+                </div>
+            
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sombras do Oriente. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- CENTRO DE TODO O JS CUSTOM DO SITE (logo antes do fechamento do body) -->
+    <script>
+        // ====== SOMBRAS DO ORIENTE - JAVASCRIPT LIMPO ======
+        console.log('🌙 Sistema iniciando...');
+        
+        // ===== NAVEGAÇÃO PRINCIPAL =====
+        window.showPage = function(pageId) {
+            console.log(`📍 Navegando para: ${pageId}`);
+            
+            try {
+                document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+                
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    console.log(`✅ Página ${pageId} ativa`);
+                } else {
+                    console.error(`❌ Página '${pageId}' não encontrada`);
+                }
+                
+                window.scrollTo({top: 0, behavior: 'smooth'});
+                
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu && mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                }
+            } catch (error) {
+                console.error('Erro na navegação:', error);
+            }
+        };
+        
+        // ===== MENU MOBILE =====
+        window.toggleMobileMenu = function() {
+            console.log('📱 Toggle menu mobile');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (!mobileMenu) {
+                console.error('❌ Menu mobile não encontrado');
+                return;
+            }
+            
+            const isActive = mobileMenu.classList.contains('active');
+            
+            if (isActive) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                console.log('✅ Menu fechado');
+            } else {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                console.log('✅ Menu aberto');
+            }
+        };
+        
+        // ===== NAVEGAÇÃO MOBILE =====
+        window.navigateAndClose = function(pageId) {
+            console.log(`📱 Navegação mobile para: ${pageId}`);
+            
+            if (window.toggleMobileMenu) {
+                window.toggleMobileMenu();
+            }
+            
+            setTimeout(() => {
+                if (window.showPage) {
+                    window.showPage(pageId);
+                }
+            }, 200);
+        };
+        
+        // ===== SISTEMA DE COMPRAS =====
+        function startPurchase(experienceType) {
+            localStorage.setItem('selectedExperience', experienceType);
+            
+            const clienteLogado = localStorage.getItem('clienteLogado');
+            if (clienteLogado) {
+                window.location.href = 'cliente/index.html';
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // ===== SISTEMA DE AUTENTICAÇÃO =====
+        function verificarStatusLogin() {
+            const clienteLogado = localStorage.getItem('clienteLogado');
+            
+            if (clienteLogado) {
+                try {
+                    const cliente = JSON.parse(clienteLogado);
+                    
+                    const authMenu = document.getElementById('authMenuItem');
+                    if (authMenu) {
+                        authMenu.innerHTML = `
+                            <a href="cliente/index.html" style="margin-right: 1rem;">
+                                <i class="fas fa-user-circle"></i> ${cliente.nome}
+                            </a>
+                            <button class="logout-btn" onclick="fazerLogout()" title="Sair">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        `;
+                    }
+                } catch (error) {
+                    resetarMenuAuth();
+                }
+            } else {
+                resetarMenuAuth();
+            }
+        }
+        
+        function resetarMenuAuth() {
+            const authMenu = document.getElementById('authMenuItem');
+            if (authMenu) {
+                authMenu.innerHTML = '<a href="login.html" id="authLink">Entrar</a>';
+            }
+        }
+        
+        function fazerLogout() {
+            if (confirm('Tem certeza que deseja sair?')) {
+                localStorage.removeItem('clienteLogado');
+                localStorage.removeItem('selectedExperience');
+                resetarMenuAuth();
+                alert('Logout realizado com sucesso!');
+                showPage('home');
+            }
+        }
+        
+        // ===== INICIALIZAÇÃO =====
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Sistema carregado');
+            verificarStatusLogin();
+        });
+        
+        // ===== EFEITOS DE SCROLL =====
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        console.log('✅ Funções disponíveis:', {
+            showPage: typeof window.showPage,
+            toggleMobileMenu: typeof window.toggleMobileMenu,
+            navigateAndClose: typeof window.navigateAndClose
+        });
+ 
+    const API_KEY = "sombrasdooriente2024";
+
+    async function carregarExperiencias() {
+        try {
+            const response = await fetch('api/produtos_experiencia.php', {
+                headers: {'X-API-Key': API_KEY}
+            });
+            const data = await response.json();
+            if (!data.success) throw new Error("Não foi possível carregar as experiências!");
+            data.data.forEach(produto => {
+                if (produto.id == 1) { // FEMININA
+                    if (produto.fotografia && document.getElementById("img-feminina")) {
+                        document.getElementById("img-feminina").style.backgroundImage = `linear-gradient(135deg, #FFF0F5, #F8E8F5), url('image/${produto.fotografia}')`;
+                        document.getElementById("img-feminina").style.backgroundSize = "cover";
+                        document.getElementById("img-feminina").style.backgroundPosition = "center";
+                    }
+                    if (produto.descricao && document.getElementById("descricao-feminina")) {
+                        document.getElementById("descricao-feminina").innerHTML = produto.descricao;
+                    }
+                    if (typeof produto.preco !== 'undefined' && document.getElementById("preco-feminina")) {
+                        document.getElementById("preco-feminina").textContent = parseFloat(produto.preco).toLocaleString("pt-BR", {style:"currency", currency:"BRL"});
+                    }
+                }
+                if (produto.id == 2) { // MASCULINA
+                    if (produto.fotografia && document.getElementById("img-masculina")) {
+                        document.getElementById("img-masculina").style.backgroundImage = `linear-gradient(135deg, #F0F9FF, #E0F2FE), url('image/${produto.fotografia}')`;
+                        document.getElementById("img-masculina").style.backgroundSize = "cover";
+                        document.getElementById("img-masculina").style.backgroundPosition = "center";
+                    }
+                    if (produto.descricao && document.getElementById("descricao-masculina")) {
+                        document.getElementById("descricao-masculina").innerHTML = produto.descricao;
+                    }
+                    if (typeof produto.preco !== 'undefined' && document.getElementById("preco-masculina")) {
+                        document.getElementById("preco-masculina").textContent = parseFloat(produto.preco).toLocaleString("pt-BR", {style:"currency", currency:"BRL"});
+                    }
+                }
+            });
+        } catch(e) {
+            // fallback: você pode exibir um aviso, manter texto padrão, etc.
+            console.error(e);
+        }
+    }
+
+    // Monitora navegação para disparar carga dinâmica só se abrir a aba de experiências
+    (function(){
+        const originalShowPage = window.showPage;
+        window.showPage = function(pageId) {
+            originalShowPage.apply(this, arguments);
+            if(pageId = "experiencias") {
+                carregarExperiencias();
+            }
+        };
+        // Se já carregou experiências, chama direto
+        document.addEventListener("DOMContentLoaded", function() {
+            if(document.getElementById("experiencias").classList.contains("active")) {
+                carregarExperiencias();
+            }
+        });
+    })();
+
+ </script>
+</body>
+</html>
+
